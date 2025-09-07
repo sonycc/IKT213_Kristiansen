@@ -11,7 +11,7 @@ def print_image_information(image):
     print("Width:", width)
     print("Channels:", channels)
         #The shape of an image is accessed by img.shape. It returns a tuple of the number of rows, columns, and channels (if the image is color):
-    print("Size (number of values):", image.size)
+    print("Size:", image.size)
         #could also be made with height * width
     print("Data type:", image.dtype)
         #img.dtype is very important while debugging because a large number of errors in OpenCV-Python code are caused by invalid datatype.
@@ -21,7 +21,7 @@ def main():
     print("Hello, World!")
 
     #Load image (1 = color)
-    image = cv2.imread("lena-1.png", 1)
+    image = cv2.imread("../lena-1.png", 1)
 
     if image is None:
         print("Error: Image not found!")
