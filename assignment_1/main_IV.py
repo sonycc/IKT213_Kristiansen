@@ -15,7 +15,7 @@ def print_image_information(image):
         #could also be made with height * width
     print("Data type:", image.dtype)
         #img.dtype is very important while debugging because a large number of errors in OpenCV-Python code are caused by invalid datatype.
-|
+
 
 def main():
     print("Hello, World!")
