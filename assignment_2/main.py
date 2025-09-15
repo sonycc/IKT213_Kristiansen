@@ -5,7 +5,7 @@ import numpy as np
 def padding(image, border_width=100):
     padded = cv2.copyMakeBorder(image, border_width, border_width, border_width, border_width,
                                 cv2.BORDER_REFLECT)
-    cv2.imwrite("lena_padded.png", padded)
+    cv2.imwrite("solutions/lena_padded.png", padded)
     return padded
 
 #2. Cropping
@@ -15,13 +15,13 @@ def crop(image, x0, x1, y0, y1):
         # Alternatilvely we could have a center point with a distance from that in X and Y radius.
 
     cropped = image[y0:y1, x0:x1]
-    cv2.imwrite("lena_cropped.png", cropped)
+    cv2.imwrite("solutions/lena_cropped.png", cropped)
     return cropped
 
 #3. Resize
 def resize(image, width=200, height=200):
     resized = cv2.resize(image, (width, height))
-    cv2.imwrite("lena_resized.png", resized)
+    cv2.imwrite("solutions/lena_resized.png", resized)
     return resized
 
 # 4. Manual Copy
@@ -31,19 +31,19 @@ def copy(image):
     for y in range(height):
         for x in range(width):
             emptyPictureArray[y, x] = image[y, x]
-    cv2.imwrite("lena_copy.png", emptyPictureArray)
+    cv2.imwrite("solutions/lena_copy.png", emptyPictureArray)
     return emptyPictureArray
 
 # 5. Grayscale
 def grayscale(image):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    cv2.imwrite("lena_grayscale.png", gray)
+    cv2.imwrite("solutions/lena_grayscale.png", gray)
     return gray
 
 # 6. HSV conversion
 def hsv(image):
     hsv_img = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-    cv2.imwrite("lena_hsv.png", hsv_img)
+    cv2.imwrite("solutions/lena_hsv.png", hsv_img)
     return hsv_img
 
 # 7. Hue shift
@@ -51,13 +51,13 @@ def hue_shifted(image, hue=50):
     shifted = np.copy(image)
     shifted = (shifted.astype(np.int16) + hue) % 256
     shifted = shifted.astype(np.uint8)
-    cv2.imwrite("lena_hue_shifted.png", shifted)
+    cv2.imwrite("solutions/lena_hue_shifted.png", shifted)
     return shifted
 
 # 8. Smoothing
 def smoothing(image):
     blurred = cv2.GaussianBlur(image, (15, 15), 0, borderType=cv2.BORDER_DEFAULT)
-    cv2.imwrite("lena_smoothed.png", blurred)
+    cv2.imwrite("solutions/lena_smoothed.png", blurred)
     return blurred
 
 # 9. Rotation
