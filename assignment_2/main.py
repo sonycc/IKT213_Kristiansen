@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import os
 
 #1. Padding
 def padding(image, border_width=100):
@@ -48,12 +49,13 @@ def hsv(image):
 
 # 7. Hue shift
 def hue_shifted(image, hue=50):
-    shifted = np.copy(image)
 
-    # The hue shift is incorrect, possibly because you use % 256, which wraps the value. -Dominika Iza Kowalska at Sun Oct 5, 2025 7:11pmat Sun Oct 5, 2025 7:11pm
-    shifted = (shifted.astype(np.int16) + hue) #% 256
-    shifted = shifted.astype(np.uint8)
+    # Perform hue (color) shift
+    shifted = (image.astype(np.int16) + hue)
+
+    # Save shifted image to file
     cv2.imwrite("solutions/lena_hue_shifted.png", shifted)
+
     return shifted
 
 # 8. Smoothing
