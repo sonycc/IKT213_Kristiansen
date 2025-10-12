@@ -97,10 +97,30 @@ def template_match(image, template, threshold=0.84):
     # Save result
     cv2.imwrite("solutions/template_matched.png", image)
 
+def resize(image, scale_factor: int = 2, up_or_down: str = "up"):
+    resized_image = np.copy(image)
+
+    # Validate inputs
+    if up_or_down.lower() not in ["up", "down"]:
+        raise ValueError("up_or_down must be either 'up' or 'down'")
+
+    # Perform resizing using image pyramids
+    for i in range(scale_factor):
+        if up_or_down.lower() == "up":
+            resized_image = cv2.pyrUp(resized_image)
+        else:
+            resized_image = cv2.pyrDown(resized_image)
+
+    # Save result
+    cv2.imwrite("solutions/lena_resized_pyramid.png", resized_image)
+    return resized_image
+
 
 if __name__ == "__main__":
-    # Load image
+    # Load images and template
     image = cv2.imread("../lambo.png")
+    image_shapes = cv2.imread("../shapes-1.png")
+    template = cv2.imread("../shapes_template.jpg")
 
     # Run Sobel
     sobel_edge_detection(image)
@@ -108,10 +128,8 @@ if __name__ == "__main__":
     # Run Canny
     canny_edge_detection(image, 50, 50)
 
-
-    # Load image and template
-    image = cv2.imread("../shapes-1.png")
-    template = cv2.imread("../shapes_template.jpg")
-
     # Run Template matching
-    template_match(image, template, 0.9)
+    template_match(image_shapes, template, 0.9)
+
+    # Run Resizer
+    resize(image, 2, "up")
