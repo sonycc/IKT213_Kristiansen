@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-# Sobel Edge Detection
+#1 Sobel Edge Detection
 def sobel_edge_detection(image):
 
     # Test variable to test the different types
@@ -37,7 +37,7 @@ def sobel_edge_detection(image):
         cv2.imwrite("solutions/sobel_default.png", sobel_abs)
         print("Saved sobel_default.png")
 
-# Canny Edge Detection
+#2 Canny Edge Detection
 def canny_edge_detection(image, threshold_1, threshold_2):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     blur = cv2.GaussianBlur(gray, (3, 3), 0)
@@ -45,7 +45,7 @@ def canny_edge_detection(image, threshold_1, threshold_2):
     edges = cv2.Canny(blur, threshold_1, threshold_2)
     cv2.imwrite("solutions/canny_edges.png", edges)
 
-# Template match
+#3 Template match
 def template_match(image, template, threshold=0.84):
 
     # Test variable to test the different types
@@ -97,6 +97,7 @@ def template_match(image, template, threshold=0.84):
     # Save result
     cv2.imwrite("solutions/template_matched.png", image)
 
+#4 Rezising
 def resize(image, scale_factor: int = 2, up_or_down: str = "up"):
     resized_image = np.copy(image)
 
