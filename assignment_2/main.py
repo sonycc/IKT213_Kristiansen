@@ -49,7 +49,9 @@ def hsv(image):
 # 7. Hue shift
 def hue_shifted(image, hue=50):
     shifted = np.copy(image)
-    shifted = (shifted.astype(np.int16) + hue) % 256
+
+    # The hue shift is incorrect, possibly because you use % 256, which wraps the value. -Dominika Iza Kowalska at Sun Oct 5, 2025 7:11pmat Sun Oct 5, 2025 7:11pm
+    shifted = (shifted.astype(np.int16) + hue) #% 256
     shifted = shifted.astype(np.uint8)
     cv2.imwrite("solutions/lena_hue_shifted.png", shifted)
     return shifted
