@@ -43,22 +43,3 @@ for filename in os.listdir(unknown_dir):
                 match_name = "Unknown"
 
             print(f"Found {match_name} in {filename} with distance {distances[best_index]:.3f}")
-
-
-
-
-
-
-Found Arne in Arne_1.jpg with distance 0.371
-Found Arne in Arne_2.jpg with distance 0.267
-Found Arne in Group_1.png with distance 0.371
-Found Arne in Group_2.png with distance 0.264
-
-Found Oscar in Oscar_1.jpg with distance 0.413
-Found Oscar in Oscar_2.jpg with distance 0.332
-Found Oscar in Group_1.png with distance 0.413
-Found Oscar in Group_2.png with distance 0.330
-
-Found Sondre in Group_1.png with distance 0.328
-Found Sondre in Sondre_1.jpg with distance 0.328
-Found Sondre in Sondre_2.jpg with distance 0.358
